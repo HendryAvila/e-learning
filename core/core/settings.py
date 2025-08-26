@@ -14,7 +14,6 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ko$oqq&na_udumv1@r9blg*ph7tl&w-z#&0%gs$=56wwish+$j"
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -26,7 +25,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "courses.apps.CoursesConfifg",
+    "courses.apps.CoursesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -105,7 +104,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 
 STATIC_URL = "static/"
