@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
-from django.db import models
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 class Subject(models.Model):
@@ -51,3 +52,21 @@ class Module(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Content(models.Model):
+    module = models.ForeignKey(
+        Module, on_delete=models.CASCADE, related_name="contents"
+    )
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    item = GenericForeignKey("content_type", "object_id")
+    order = models.PositiveIntegerField()
+
+    class Meta:
+        verbose_name = "Content"
+        verbose_name_plural = "Contents"
+        ordering = ["order"]
+
+    def __str__(self):
+        return f"Content for {self.module.title} - {self.item}"
